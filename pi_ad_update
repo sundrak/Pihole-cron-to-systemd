@@ -1,0 +1,28 @@
+----------------------------------------------
+#pi_ad_update.service
+# adlist(s) update on sunday@random time
+[Unit]
+Description=PIHOLE adlist update
+
+[Service]
+Type=oneshot
+Environment=PATH="$PATH:/usr/sbin:/usr/local/bin/"
+ExecStart=pihole updateGravity >/var/log/pihole/pihole_updateGravity.log || cat /var/log/pihole/pihole_updateGravity.log
+
+---------------------------------------------
+
+----------------------------------------------
+#pi_ad_update.timer
+# adlist(s) update on sunday@random time
+[Unit]
+Description=PIHOLE adlist update
+
+[Timer]
+OnCalendar=Sun 00:00
+RandomizedDelaySec=6h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
+----------------------------------------------
