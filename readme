@@ -1,1 +1,12 @@
-hi
+Pihole use cron jobs to do some tasks.
+But why is Pihole using cron, when you have systemd?
+
+I basically created service/timer files that does the same thing that the cron jobs are doing for the Pihole.
+This could be handy when you otherwise dont use cron at all.
+
+The origional post from reddit:
+https://www.reddit.com/r/pihole/comments/1pe3jsa/cron_to_systemd/
+
+The cron jobs in question:
+https://github.com/pi-hole/pi-hole/blob/master/advanced/Templates/pihole.cron
+
