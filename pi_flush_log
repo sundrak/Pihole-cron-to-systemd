@@ -1,0 +1,28 @@
+----------------------------------------------
+#pi_flush_log.service
+# flush the log daily at 00:00
+[Unit]
+Description=PIHOLE flush log
+
+[Service]
+Type=oneshot
+Environment=PATH="$PATH:/usr/sbin:/usr/local/bin/"
+ExecStart=pihole flush once quiet
+
+---------------------------------------------
+
+
+---------------------------------------------
+#pi_flush_log.timer
+# flush the log daily at 00:00
+[Unit]
+Description=PIHOLE flush log
+
+[Timer]
+OnCalendar=*-*-* 00:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
+----------------------------------------------
