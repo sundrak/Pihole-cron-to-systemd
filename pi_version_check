@@ -1,0 +1,32 @@
+---------------------------------------------
+#pi_version_check.service
+# check version on boot + every 24h
+[Unit]
+Description=PIHOLE check version 
+
+[Service]
+Type=oneshot
+PATH="$PATH:/usr/sbin:/usr/local/bin/"
+ExecStart=pihole updatechecker
+
+
+[Install]
+WantedBy=multi-user.target
+
+---------------------------------------------
+
+
+---------------------------------------------
+#pi_version_check.timer
+# check version on boot + every 24h
+[Unit]
+Description=PIHOLE check version
+
+[Timer]
+OnBootSec=0min
+OnUnitActiveSec=24h
+Persistent=false
+
+[Install]
+WantedBy=timers.target
+---------------------------------------------
