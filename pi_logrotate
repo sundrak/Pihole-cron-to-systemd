@@ -1,0 +1,14 @@
+---------------------------------------------
+#pi_logrotate.service
+[Unit]
+Description=PIHOLE logrotate 
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/logrotate --state /var/lib/logrotate/pihole /etc/pihole/logrotate
+
+
+[Install]
+WantedBy=multi-user.target
+
+---------------------------------------------
